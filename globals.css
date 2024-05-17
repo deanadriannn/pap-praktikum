@@ -9,7 +9,7 @@ body {
 }
 
 #sidebar {
-    width: 10rem;
+    width: 7rem;
     height: 100%;
     position: fixed;
     top: 0;
@@ -27,7 +27,7 @@ body {
 }
 
 #profile-section {
-    margin-top: 1rem;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
 }
@@ -37,11 +37,24 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* add gap in space between */
-    gap: 1.5rem;
+    gap: 2rem;
     margin-top: 2.5rem;
 }
 
 #logout-section {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar-active {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#active-line {
+    position: absolute;
+    width: 0.35rem;
+    right: 0;
+    top: -50%;
 }
