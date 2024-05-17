@@ -58,3 +58,12 @@ body {
     right: 0;
     top: -50%;
 }
+
+main {
+    margin-left: 9rem;
+    margin-top: 4rem;
+}
+
+#page-title {
+    color: #EA5B5B;
+}
