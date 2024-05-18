@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
 html,
 body,
 :root {
   height: 100%;
+  font-family: "Manrope", sans-serif;
 }
 
 body {
@@ -61,6 +64,7 @@ body {
 
 main {
     margin-left: 9rem;
+    margin-right: 2rem;
     margin-top: 4rem;
 }
 
