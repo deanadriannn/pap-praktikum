@@ -108,6 +108,26 @@ button:hover {
 }
 
 .detail-text {
-    width: 50%;
+    width: 60%;
+    margin-top: 0px;
     padding-left: 20px;
+}
+
+.infobox {
+    background-color: #ffffff;
+    width: 15%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    margin-top: -1350px;
+}
+
+.infobox-content h2 {
+    align-items: center;
 }
