@@ -1,46 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halaman Statistik</title>
-  <link rel="stylesheet" href="../globals.css">
-  <link rel="stylesheet" href="../styles/statistik.css">
-</head>
-<body>
-  <nav id="sidebar">
-    <div id="sidebar-content-section">
-      <div id="profile-section">
-        <img src="../icons/sidebar/profile-icon.svg"/>
-      </div>
-      <div id="sidebar-elements">
-        <div  class="sidebar-active">
-          <a href="./statistik.html">
-            <img src="../icons/sidebar-active/statistic-icon.svg" />
-          </a>
-          <img src="../icons/sidebar-active/active-line.svg" id="active-line"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Statistik</title>
+    <link rel="stylesheet" href="../globals.css" />
+    <link rel="stylesheet" href="../styles/statistik.css" />
+    <link rel="stylesheet" href="../swiper-bundle.min.css">
+  </head>
+  <body>
+    <nav id="sidebar">
+      <div id="sidebar-content-section">
+        <div id="profile-section">
+          <img src="../icons/sidebar/profile-icon.svg" />
         </div>
-        <a href="./panduan.html">
-          <img src="../icons/sidebar-nonactive/book-icon.svg"/>
-        </a>
-        <a href="./presiden.html">
-          <img src="../icons/sidebar-nonactive/people-icon.svg"/>
-        </a>
-        <a href="./list-partai.html">
-          <img src="../icons/sidebar-nonactive/political-icon.svg"/>
-        </a>
-        <a href="./voting.html">
-          <img src="../icons/sidebar-nonactive/politics-vote-icon.svg"/>
-        </a>
+        <div id="sidebar-elements">
+          <div class="sidebar-active">
+            <a href="./statistik.html">
+              <img src="../icons/sidebar-active/statistic-icon.svg" />
+            </a>
+            <img
+              src="../icons/sidebar-active/active-line.svg"
+              id="active-line"
+            />
+          </div>
+          <a href="./panduan.html">
+            <img src="../icons/sidebar-nonactive/book-icon.svg" />
+          </a>
+          <a href="./presiden.html">
+            <img src="../icons/sidebar-nonactive/people-icon.svg" />
+          </a>
+          <a href="./partai.html">
+            <img src="../icons/sidebar-nonactive/political-icon.svg" />
+          </a>
+          <a href="./voting.html">
+            <img src="../icons/sidebar-nonactive/politics-vote-icon.svg" />
+          </a>
+        </div>
       </div>
-    </div>
-    <div id="logout-section">
-      <img src="../icons/sidebar/logout-icon.svg" />
-    </div>
-  </nav>
-  <main>
-    <h1 id="page-title">Statistik</h1>
-  </main>
-  <script src="script.js"></script>
-</body>
+      <div id="logout-section">
+        <img src="../icons/sidebar/logout-icon.svg" />
+      </div>
+    </nav>
+    <main>
+      <div id="title-and-button">
+        <h1 id="page-title">Statistik</h1>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+          "
+        >
+          <button id="notification-button">
+            <img src="../icons/notifications.svg" />
+          </button>
+          <button id="setting-button">
+            <img src="../icons/settings.svg" />
+          </button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="jumlah">
+          <div class="card">
+            <h4>Jumlah Penduduk</h4>
+            <div class="card-content">
+              <img src="../icons/statistik-page/people.svg" />
+              <h2>275,5 JT</h2>
+            </div>
+          </div>
+          <div class="card" style="margin-left:15px;">
+            <h4>Jumlah Pulau</h4>
+            <div class="card-content">
+              <img src="../icons/statistik-page/island.svg" />
+              <h2>17.001</h2>
+            </div>
+          </div>
+          <div class="card" style="margin-left:15px;">
+            <h4>Jumlah Provinsi</h4>
+            <div class="card-content">
+              <img src="../icons/statistik-page/location.svg" />
+              <h2>38</h2>
+            </div>
+          </div>
+        </div>
+        <div class="canvassCardPemilih">
+          <h2>Statistik Pemilih</h2>
+          <canvas id="statistikPemilih"></canvas>
+        </div>
+      </div>
+
+      <!-- Object 1-->
+      <div class="canvassCardProvinsi">
+        <h2 style="color: #F04F4F ">Statistik Provinsi</h2>
+        <h3 style="font-weight: 500; color: #FFAAAA;">Di Pulau Sumatera</h3>
+        <canvas id="statistikProvinsi"></canvas>
+      </div>
+
+      <!-- Object 2-->
+      <div class="canvassCardProvinsi">
+        <h2 style="color: #F04F4F ">Statistik Provinsi</h2>
+        <h3 style="font-weight: 500; color: #FFAAAA;">Di Pulau Jawa</h3>
+        <canvas id="statistikProvinsi2"></canvas>
+      </div>
+
+      <!-- Object 3-->
+      <div class="canvassCardProvinsi">
+        <h2 style="color: #F04F4F ">Statistik Provinsi</h2>
+        <h3 style="font-weight: 500; color: #FFAAAA;">Di Pulau Sulawesi</h3>
+        <canvas id="statistikProvinsi3"></canvas>
+      </div>
+
+
+      <button id="accessibility-button">
+        <img src="../icons/accessibility.svg" />
+      </button>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Fungsi untuk generate Random Number
+      function getRandomData(numItems, min, max) {
+          const data = [];
+          for (let i = 0; i < numItems; i++) {
+              data.push(Math.floor(Math.random() * (max - min + 1)) + min);
+          }
+          return data;
+      }
+
+      // Mengambil element canvas
+      const ctx = document.getElementById("statistikProvinsi").getContext("2d");
+
+      // Generate random data
+      const randomData = getRandomData(9, 1, 100000); //  items, nilai antara 1 sampai 100
+
+      // Membuat bar chart
+      new Chart(ctx, {
+          type: "bar",
+          data: {
+              labels: [
+                  "Aceh",
+                  "Sumatera Utara",
+                  "Sumatera Barat",
+                  "Riau",
+                  "Kepulauan Riau",
+                  "Jambi",
+                  "Bengkulu",
+                  "Sumatera Selatan",
+                  "Bangka Belitung",
+              ],
+              datasets: [
+                  {
+                      label: "Pemilih",
+                      data: randomData,
+                      backgroundColor: ["rgba(234, 91, 91, 1.0)"],
+                  },
+              ],
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                  },
+              },
+          },
+      });
+  </script>
+
+  <script>
+    // Fungsi untuk generate Random Number
+    function getRandomData(numItems, min, max) {
+        const data = [];
+        for (let i = 0; i < numItems; i++) {
+            data.push(Math.floor(Math.random() * (max - min + 1)) + min);
+        }
+        return data;
+    }
+
+    // Mengambil element canvas
+    const ctx4 = document.getElementById("statistikProvinsi3").getContext("2d");
+
+    // Generate random data
+    const randomDatasss = getRandomData(6, 1, 100000); // 6 items, nilai antara 1 sampai 275,5 JT
+
+    // Membuat bar chart
+    new Chart(ctx4, {
+        type: "bar",
+        data: {
+            labels: [
+                "Sulawesi Utara",
+                "Sulawesi Tengah",
+                "Sulawesi Selatan",
+                "Sulawesi Tenggara",
+                "Sulawesi Barat",
+                "Gorontalo",
+            ],
+            datasets: [
+                {
+                    label: "Pemilih",
+                    data: randomDatasss,
+                    backgroundColor: ["rgba(234, 91, 91, 1.0)"],
+                },
+            ],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        },
+    });
+</script>
+
+<script>
+  // Fungsi untuk generate Random Number
+  function getRandomData(numItems, min, max) {
+      const data = [];
+      for (let i = 0; i < numItems; i++) {
+          data.push(Math.floor(Math.random() * (max - min + 1)) + min);
+      }
+      return data;
+  }
+
+  // Mengambil element canvas
+  const ctx3 = document.getElementById("statistikProvinsi2").getContext("2d");
+
+  // Generate random data
+  const randomDatass = getRandomData(6, 1, 100000); // 9 items, nilai antara 1 sampai 100
+
+  // Membuat bar chart
+  new Chart(ctx3, {
+      type: "bar",
+      data: {
+          labels: [
+              "Banten",
+              "Jawa Barat",
+              "DKI Jakarta",
+              "Jawa Tengah",
+              "DI Yogyakarta",
+              "Jawa Timur",
+          ],
+          datasets: [
+              {
+                  label: "Pemilih",
+                  data: randomDatass,
+                  backgroundColor: ["rgba(234, 91, 91, 1.0)"],
+              },
+          ],
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true,
+              },
+          },
+      },
+  });
+</script>
+
+
+    <script>
+      // Fungsi untuk generate Random Number
+      function getRandomData(numItems, min, max) {
+        const data = [];
+        for (let i = 0; i < numItems; i++) {
+            data.push(Math.floor(Math.random() * (max - min + 1)) + min);
+        }
+        return data;
+    }
+
+    // Mengambil element canvas
+    const ctx2 = document.getElementById("statistikPemilih").getContext("2d");
+
+    // Generate random data
+    const randomDatas = getRandomData(2, 1, 275500000); // 9 items, nilai antara 1 sampai 275,5 JT
+
+      new Chart(ctx2, {
+        type: "doughnut",
+        data: {
+          labels: ["Sudah", "Belum"],
+          datasets: [
+            {
+              label: "Pemilih",
+              data: randomDatas,
+              backgroundColor: [
+                "rgba(234, 91, 91, 1.0)",
+                "rgba(212, 212, 212, 1.0)",
+              ],
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
 </html>
