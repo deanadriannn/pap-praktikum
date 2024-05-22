@@ -72,3 +72,35 @@ main {
 #page-title {
     color: #EA5B5B;
 }
+
+#notification-button,
+#setting-button {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 50px;
+}
+
+#notification-button:hover,
+#setting-button:hover {
+    cursor: pointer;
+}
+
+#title-and-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#accessibility-button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    border: none;
+    background-color: transparent;
+}
+
+#accessibility-button:hover {
+    cursor: pointer;
+}
