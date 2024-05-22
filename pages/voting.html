@@ -6,6 +6,7 @@
   <title>Halaman Voting</title>
   <link rel="stylesheet" href="../globals.css">
   <link rel="stylesheet" href="../styles/voting.css">
+  <link rel="stylesheet" href="../swiper-bundle.min.css">
 </head>
 <body>
   <nav id="sidebar">
@@ -23,7 +24,7 @@
         <a href="./presiden.html">
           <img src="../icons/sidebar-nonactive/people-icon.svg"/>
         </a>
-        <a href="./partai.html">
+        <a href="./list-partai.html">
           <img src="../icons/sidebar-nonactive/political-icon.svg"/>
         </a>
         <div  class="sidebar-active">
@@ -39,8 +40,156 @@
     </div>
   </nav>
   <main>
-    <h1 id="page-title">Voting</h1>
+    <div id="title-and-button">
+      <h1 id="page-title">Voting</h1>
+      <div style="display: flex; justify-content: center; align-items: center; gap: 5px;">
+        <button id="notification-button">
+          <img src="../icons/notifications.svg" />
+        </button>
+        <button id="setting-button">
+          <img src="../icons/settings.svg">
+        </button>
+      </div>
+    </div>
+    <div class="slide-container swiper">
+      <div class="slide-content">
+        <div class="swiper-wrapper">
+          <!-- Objek pertama -->
+          <div class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="../icons/presiden/ganjar.jpg" alt="Jokowi" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h2 class="name">Ganjar Pranowo</h2>
+              <div class="link">
+                <a href="../pages/DPresiden.html">
+                  Lihat Detail
+                </a>
+              </div>
+              <button class="button">
+                <a href="../pages/statistik.html">
+                  Pilih
+                </a>
+              </button>
+            </div>
+          </div>
+          <!-- Objek kedua (salinan) -->
+          <div class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="../icons/presiden/anis.jpg" alt="Jokowi" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h2 class="name">Anies Baswedan</h2>
+              <div class="link">
+                <a href="../pages/DPresiden.html">
+                  Lihat Detail
+                </a>
+              </div>
+              <button class="button">
+                <a href="../pages/statistik.html">
+                  Pilih
+                </a>
+              </button>
+            </div>
+          </div>
+          <div class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="../icons/presiden/prabroro.jpg" alt="Jokowi" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h2 class="name">Prabowo Subianto</h2>
+              <div class="link">
+                <a href="../pages/DPresiden.html">
+                  Lihat Detail
+                </a>
+              </div>
+              <button class="button">
+                <a href="../pages/statistik.html">
+                  Pilih
+                </a>
+              </button>
+            </div>
+          </div>
+          <div class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="../icons/presiden/duljak.jpg" alt="Jokowi" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h2 class="name">Alvin Abdul</h2>
+              <div class="link">
+                <a href="../pages/DPresiden.html">
+                  Lihat Detail
+                </a>
+              </div>
+              <button class="button">
+                <a href="../pages/statistik.html">
+                  Pilih
+                </a>
+              </button>
+            </div>
+          </div>
+          <div class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="../icons/presiden/andre.jpg" alt="Jokowi" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h2 class="name">Rendi Zul Fauzi</h2>
+              <div class="link">
+                <a href="../pages/DPresiden.html">
+                  Lihat Detail
+                </a>
+              </div>
+              <button class="button">
+                <a href="../pages/statistik.html">
+                  Pilih
+                </a>
+              </button>
+            </div>
+          </div>
+          <div class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                <img src="../icons/presiden/jarudin.jpg" alt="Jokowi" class="card-img">
+              </div>
+            </div>
+            <div class="card-content">
+              <h2 class="name">Azharuddin Hamid</h2>
+              <div class="link">
+                <a href="../pages/DPresiden.html">
+                  Lihat Detail
+                </a>
+              </div>
+              <button class="button">
+                <a href="../pages/statistik.html">
+                  Pilih
+                </a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
   </main>
-  <script src="script.js"></script>
+  <script src="../swiper-bundle.min.js"></script>
+  <script src="../script.js"></script>
 </body>
 </html>
