@@ -14,3 +14,7 @@ var swiper = new Swiper(".slide-content",{
         prevEl: ".swiper-button-prev",
     },
 });
+
+document.getElementById("myButton").addEventListener("click", function() {
+    window.location.href = "statistik.html"; // Ganti dengan URL halaman yang ingin dibuka
+});
