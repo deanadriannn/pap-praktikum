@@ -6,6 +6,7 @@
     <title>Halaman Statistik</title>
     <link rel="stylesheet" href="../globals.css" />
     <link rel="stylesheet" href="../styles/statistik.css" />
+    <link rel="stylesheet" href="../swiper-bundle.min.css">
   </head>
   <body>
     <nav id="sidebar">
@@ -69,14 +70,14 @@
               <h2>275,5 JT</h2>
             </div>
           </div>
-          <div class="card">
+          <div class="card" style="margin-left:15px;">
             <h4>Jumlah Pulau</h4>
             <div class="card-content">
               <img src="../icons/statistik-page/island.svg" />
               <h2>17.001</h2>
             </div>
           </div>
-          <div class="card">
+          <div class="card" style="margin-left:15px;">
             <h4>Jumlah Provinsi</h4>
             <div class="card-content">
               <img src="../icons/statistik-page/location.svg" />
@@ -84,12 +85,33 @@
             </div>
           </div>
         </div>
-        <div class="canvassCard">
+        <div class="canvassCardPemilih">
           <h2>Statistik Pemilih</h2>
           <canvas id="statistikPemilih"></canvas>
         </div>
       </div>
-      <div class="canvassCard"><canvas id="statistikProvinsi"></canvas></div>
+
+      <!-- Object 1-->
+      <div class="canvassCardProvinsi">
+        <h2 style="color: #F04F4F ">Statistik Provinsi</h2>
+        <h3 style="font-weight: 500; color: #FFAAAA;">Di Pulau Sumatera</h3>
+        <canvas id="statistikProvinsi"></canvas>
+      </div>
+
+      <!-- Object 2-->
+      <div class="canvassCardProvinsi">
+        <h2 style="color: #F04F4F ">Statistik Provinsi</h2>
+        <h3 style="font-weight: 500; color: #FFAAAA;">Di Pulau Jawa</h3>
+        <canvas id="statistikProvinsi2"></canvas>
+      </div>
+
+      <!-- Object 3-->
+      <div class="canvassCardProvinsi">
+        <h2 style="color: #F04F4F ">Statistik Provinsi</h2>
+        <h3 style="font-weight: 500; color: #FFAAAA;">Di Pulau Sulawesi</h3>
+        <canvas id="statistikProvinsi3"></canvas>
+      </div>
+
 
       <button id="accessibility-button">
         <img src="../icons/accessibility.svg" />
@@ -99,41 +121,162 @@
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      const ctx = document.getElementById("statistikProvinsi");
+      // Fungsi untuk generate Random Number
+      function getRandomData(numItems, min, max) {
+          const data = [];
+          for (let i = 0; i < numItems; i++) {
+              data.push(Math.floor(Math.random() * (max - min + 1)) + min);
+          }
+          return data;
+      }
 
+      // Mengambil element canvas
+      const ctx = document.getElementById("statistikProvinsi").getContext("2d");
+
+      // Generate random data
+      const randomData = getRandomData(9, 1, 100000); //  items, nilai antara 1 sampai 100
+
+      // Membuat bar chart
       new Chart(ctx, {
+          type: "bar",
+          data: {
+              labels: [
+                  "Aceh",
+                  "Sumatera Utara",
+                  "Sumatera Barat",
+                  "Riau",
+                  "Kepulauan Riau",
+                  "Jambi",
+                  "Bengkulu",
+                  "Sumatera Selatan",
+                  "Bangka Belitung",
+              ],
+              datasets: [
+                  {
+                      label: "Pemilih",
+                      data: randomData,
+                      backgroundColor: ["rgba(234, 91, 91, 1.0)"],
+                  },
+              ],
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                  },
+              },
+          },
+      });
+  </script>
+
+  <script>
+    // Fungsi untuk generate Random Number
+    function getRandomData(numItems, min, max) {
+        const data = [];
+        for (let i = 0; i < numItems; i++) {
+            data.push(Math.floor(Math.random() * (max - min + 1)) + min);
+        }
+        return data;
+    }
+
+    // Mengambil element canvas
+    const ctx4 = document.getElementById("statistikProvinsi3").getContext("2d");
+
+    // Generate random data
+    const randomDatasss = getRandomData(6, 1, 100000); // 6 items, nilai antara 1 sampai 275,5 JT
+
+    // Membuat bar chart
+    new Chart(ctx4, {
         type: "bar",
         data: {
-          labels: [
-            "Aceh",
-            "Sumatera Utara",
-            "Sumatera Barat",
-            "Riau",
-            "Kepulauan Riau",
-            "Jambi",
-            "Bengkulu",
-            "Sumatera Selatan",
-            "Bangka Belitung",
-          ],
-          datasets: [
-            {
-              label: "Pemilih",
-              data: [12, 19, 3, 5, 2, 3, 5, 5, 2],
-              backgroundColor: ["rgba(234, 91, 91, 1.0)"],
-            },
-          ],
+            labels: [
+                "Sulawesi Utara",
+                "Sulawesi Tengah",
+                "Sulawesi Selatan",
+                "Sulawesi Tenggara",
+                "Sulawesi Barat",
+                "Gorontalo",
+            ],
+            datasets: [
+                {
+                    label: "Pemilih",
+                    data: randomDatasss,
+                    backgroundColor: ["rgba(234, 91, 91, 1.0)"],
+                },
+            ],
         },
         options: {
-          scales: {
-            y: {
-              beginAtZero: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
             },
-          },
         },
-      });
-    </script>
+    });
+</script>
+
+<script>
+  // Fungsi untuk generate Random Number
+  function getRandomData(numItems, min, max) {
+      const data = [];
+      for (let i = 0; i < numItems; i++) {
+          data.push(Math.floor(Math.random() * (max - min + 1)) + min);
+      }
+      return data;
+  }
+
+  // Mengambil element canvas
+  const ctx3 = document.getElementById("statistikProvinsi2").getContext("2d");
+
+  // Generate random data
+  const randomDatass = getRandomData(6, 1, 100000); // 9 items, nilai antara 1 sampai 100
+
+  // Membuat bar chart
+  new Chart(ctx3, {
+      type: "bar",
+      data: {
+          labels: [
+              "Banten",
+              "Jawa Barat",
+              "DKI Jakarta",
+              "Jawa Tengah",
+              "DI Yogyakarta",
+              "Jawa Timur",
+          ],
+          datasets: [
+              {
+                  label: "Pemilih",
+                  data: randomDatass,
+                  backgroundColor: ["rgba(234, 91, 91, 1.0)"],
+              },
+          ],
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true,
+              },
+          },
+      },
+  });
+</script>
+
+
     <script>
-      const ctx2 = document.getElementById("statistikPemilih");
+      // Fungsi untuk generate Random Number
+      function getRandomData(numItems, min, max) {
+        const data = [];
+        for (let i = 0; i < numItems; i++) {
+            data.push(Math.floor(Math.random() * (max - min + 1)) + min);
+        }
+        return data;
+    }
+
+    // Mengambil element canvas
+    const ctx2 = document.getElementById("statistikPemilih").getContext("2d");
+
+    // Generate random data
+    const randomDatas = getRandomData(2, 1, 275500000); // 9 items, nilai antara 1 sampai 275,5 JT
 
       new Chart(ctx2, {
         type: "doughnut",
@@ -142,7 +285,7 @@
           datasets: [
             {
               label: "Pemilih",
-              data: [60, 40],
+              data: randomDatas,
               backgroundColor: [
                 "rgba(234, 91, 91, 1.0)",
                 "rgba(212, 212, 212, 1.0)",
